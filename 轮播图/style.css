@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.wrap {
+	margin:auto;
+	max-width: 800px;
+	position: relative;
+	overflow: hidden;
+}
+
+img {
+	max-width:100%;
+}
+
+.change{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 39%;
+	background: rgba(138, 218, 176, 0.97);
+	border-radius: 57%;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 55px;
+	cursor: pointer;
+}
+.left {
+	left: 10%;
+}
+
+.right {
+	left: 80%;
+}
