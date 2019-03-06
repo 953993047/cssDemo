@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻转卡片</title>
+	<style>
+		*{
+			margin: 0;
+			padding:0;
+		}
+		.container{
+			position: relative;
+			margin:200px auto;
+		}
+		/*通过定位将两个图片叠在一起，并通过z-index让正面显示在前，*/
+		img{
+			position: absolute;
+			left: 0;
+			top: 0;
+			transition: all 2s;
+			backface-visibility: hidden;/*让图片的背面隐藏*/
+		}
+		.front{
+			transform:rotateY(0deg);
+			z-index: 2;
+		}
+		.back{
+			transform:rotateY(180deg);
+		}
+		/*.contain:hover .front和.container:hover .front选择器能让hover效果在放到container容器时分别触发，能让两张图片一起转，如果直接用.front:hover和.back:hover会只能触发起前一张图片,通过hover改变transtorm：rotateY的角度，并添加transition过渡效果让图片旋转。*/
+		.container:hover .back{
+			transform:rotateY(360deg);
+		}
+		.container:hover .front {
+			transform:rotateY(180deg);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="正面.jpg"  class="front">
+		<img src="反面.jpg" class="back" >
+		</div>
+	</div>
+</body>
+</html>
