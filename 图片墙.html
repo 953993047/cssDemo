@@ -11,6 +11,15 @@
 	body{
 		background: url('http://file06.16sucai.com/2016/0410/d09174e71406484f457ce72cb560f899.jpg');
 	}
+	.pic{
+		width:400px;
+		position: absolute;
+		border:solid  8px white;
+		border-bottom-width: 30px;
+		box-shadow: 0px 0px 10px #CACACA;
+		transform: rotate(-30deg);
+		transition:transform  1s
+	}
 	#word{
 		font-size: 30px;
 		font:bold;
@@ -19,22 +28,16 @@
 		margin-left:550px;
 		text-shadow:0 0 10px grey;
 	}
-	#pic1{
-		width:400px;
-		position: absolute;
+	.pic1{
 		left:200px;
 		top: 200px;
-		border:solid  8px white;
-		border-bottom-width: 30px;
-		box-shadow: 0px 0px 10px #CACACA;
 		transform: rotate(-30deg);
-		transition:transform  1s
 	}
-	#pic1:hover{
+	.pic1:hover{
 		transform: rotate(0);
 		z-index: 100;
 	}
-	#pic2{
+	.pic2{
 		width: 400px;
 		position: absolute;
 		left: 800px;
@@ -45,52 +48,34 @@
 		transform: rotate(20deg);
 		transition:transform  1s
 	}
-	#pic2:hover{
+	.pic2:hover{
 		transform: rotate(0);
 		z-index: 100;
 	}
-	#pic3{
-		width: 400px;
-		position: absolute;
+	.pic3{
 		left: 700px;
 		top: 600px;
-		border:solid  8px white;
-		border-bottom-width: 30px;
-		box-shadow: 0px 0px 10px #CACACA;
 		transform: rotate(13deg);
-		transition:transform  1s
 	}
-	#pic3:hover{
+	.pic3:hover{
 		transform: rotate(0);
 		z-index: 100;
 	}
-	#pic4{
-		width: 400px;
-		position: absolute;
+	.pic4{
 		left: 400px;
 		top: 400px;
-		border:solid  8px white;
-		border-bottom-width: 30px;
-		box-shadow: 0px 0px 10px #CACACA;
 		transform: rotate(-45deg);
-		transition:transform  1s
 	}
-	#pic4:hover{
+	.pic4:hover{
 		transform: rotate(0);
 		z-index: 100;
 	}
-	#pic5{
-		width: 400px;
-		position: absolute;
+	.pic5{
 		left: 200px;
 		top: 600px;
-		border:solid  8px white;
-		border-bottom-width: 30px;
-		box-shadow: 0px 0px 10px #CACACA;
 		transform: rotate(45deg);
-		transition:transform  1s
 	}
-	#pic5:hover{
+	.pic5:hover{
 		transform: rotate(0);
 		z-index: 100;
 	}
@@ -99,11 +84,11 @@
 <body>
 	<div class="container">
 		<div id='word'>css图片背景墙</div>
-		<img id='pic1' src="http://img.netbian.com/file/2019/0306/small7282f965f2f57f130126c4d4d36e46f51551836177.jpg">
-		<img id='pic2' src="http://img.netbian.com/file/newc/c6d42913c0440bdb5ffeec9c90236d66.jpg">
-		<img id='pic3' src="http://img.netbian.com/file/2019/0123/small39234b42ec314a0dc35f39e9eaa9be331548216596.jpg">
-		<img id='pic4' src="http://img.netbian.com/file/2019/0115/small4fc50183dbb0e2467ade81718808f8f01547558807.jpg">
-		<img id='pic5' src="http://img.netbian.com/file/2019/0111/smalleeac81cb193b5b1be0d440fd5d5c0c2f1547170853.jpg">
+		<img class="pic pic1"  src="http://img.netbian.com/file/2019/0306/small7282f965f2f57f130126c4d4d36e46f51551836177.jpg">
+		<img class="pic pic2"  src="http://img.netbian.com/file/newc/c6d42913c0440bdb5ffeec9c90236d66.jpg">
+		<img class="pic pic3"  src="http://img.netbian.com/file/2019/0123/small39234b42ec314a0dc35f39e9eaa9be331548216596.jpg">
+		<img class="pic pic4" src="http://img.netbian.com/file/2019/0115/small4fc50183dbb0e2467ade81718808f8f01547558807.jpg">
+		<img class="pic pic5"  src="http://img.netbian.com/file/2019/0111/smalleeac81cb193b5b1be0d440fd5d5c0c2f1547170853.jpg">
 	</div>
 </body>
 </html>
