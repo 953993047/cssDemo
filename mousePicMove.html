@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fly</title>
+	<style>
+		*{
+			padding:0;
+			margin: 0;
+		}
+		img{
+			width: 60px;
+			height: 60px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<img src="https://wxt.sinaimg.cn/thumb300/6a2afec3ly1fxeihye2uxj20qp0uv0y8.jpg?tags=%5B%5D" alt="xiaoxie">
+	<script>
+		//给整个文档添加onmousemove事件
+		document.onmousemove=function(e){
+			e=e||window.event;
+			//pageX=e.pageX  for(ie9,chorme,ff)
+			var pageX=e.pageX;
+			var pageY=e.pageY;
+			// var pageX=e.clientX+(document.documentElement.scrollLeft||document.body.scrollLeft);
+			// var pageY=e.clientY+(document.documentElement.scrollTop||document.body.scrollTop);
+			var im=document.getElementsByTagName('img')[0];
+			im.style.left=pageX-30+'px';
+			im.style.top=pageY-30+'px';
+		}
+		
+	</script>
+</body>
+</html>
