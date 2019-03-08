@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dice</title>
+    <style>
+  /*这个demo没有写兼容性写法*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+/*六面骰子的包含块，宽度和高度与以免骰子一致才能包住骰子*/
+    .container {
+        transform-style: preserve-3d;
+        width: 200px;
+        height: 200px;
+        margin: 200px auto;
+        position: relative;
+        perspective-origin: 50% 50%;
+        animation: spin 15s infinite;
+    }
+/*六面骰子共同特性*/
+    .container div {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+/*六面骰子不同样式*/
+    .back {
+        background: rgb(1, 55, 66, 0.5);
+        transform: translateZ(-100px);
+    }
+
+    .right {
+        background: rgb(23, 123, 223, 0.5);
+        transform: rotateY(90deg) translateZ(100px);
+    }
+
+    .left {
+        background: rgb(33, 123, 123, 0.5);
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: rotateY(-90deg) translateZ(100px);
+    }
+
+    .bottom {
+        background: rgb(222, 222, 222, 0.5);
+        transform: rotateX(-90deg) translateZ(100px);
+    }
+
+    .top {
+        background: rgb(178, 157, 178, 0.5);
+        transform: rotateX(90deg) translateZ(100px);
+    }
+
+    .front {
+        background: rgb(212, 212, 40, 0.5);
+        transform: translateZ(100px);
+    }
+
+    /*动画关键帧*/
+    @keyframes spin {
+        0% {
+            transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg) translateX(0);
+        }
+
+        35% {
+            transform: rotateX(-180deg) rotateY(-90deg) rotateZ(0deg) translateX(0);
+        }
+
+        45% {
+            transform: rotateX(-180deg) rotateY(-90deg) rotateZ(0deg) translateX(0);
+        }
+
+        65% {
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(-360deg) translateX(0);
+        }
+
+        75% {
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(-360deg) translateX(0);
+        }
+
+        100% {
+            transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg) translateX(0);
+        }
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="back"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="bottom"></div>
+        <div class="top"></div>
+        <div class="front"></div>
+    </div>
+</body>
+
+</html>
