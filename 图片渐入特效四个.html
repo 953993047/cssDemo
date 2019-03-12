@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>texiao</title>
+    <style>
+    	*{
+    		padding:0;
+    		margin:0;
+    	}
+    	.big{
+    		margin: 0;
+    		height: 704px;
+    		width: 100%;
+    		background: url('https://wxt.sinaimg.cn/thumb300/6a2afec3ly1fxeihye2uxj20qp0uv0y8.jpg?tags=%5B%5D');
+    		background-size: cover;
+    		position: relative;
+    	}
+    	.wrapper{
+    		height: 200px;
+    		width: 100%;
+			position: absolute;
+			top: 70%;
+			left:10%;
+    	}
+    	.wrapper>div{
+    		width: 20%;
+    		height:200px;
+    		display:inline-block;
+    		background-size: cover;
+    	}
+    	.a0{
+    		background-image: url('https://wxt.sinaimg.cn/thumb300/6a2afec3ly1fxeihye2uxj20qp0uv0y8.jpg?tags=%5B%5D') ;
+    	}
+    	.a1{
+    		background-image:url('https://wxt.sinaimg.cn/thumb300/6a2afec3ly1fxeik13thpj20qo0vjjw1.jpg?tags=%5B%5D');
+    	}
+    	.a2{
+    		background-image: url('https://wxt.sinaimg.cn/thumb300/6a2afec3gy1fwvoays5odj22c0340000.jpg?tags=%5B%5D');
+    	}
+    	.a3{
+    		background-image: url('https://wx2.sinaimg.cn/mw690/6a2afec3ly1fvo1rrqctlj21oh2ipb2c.jpg');
+    	}
+    	/*四张图片的动画特效*/
+        @keyframes animate3 {
+          0% {
+            transform: rotate(-360deg) scale(0.1);
+          }
+          100% {
+            transform: rotate(0) scale(1);
+          }
+        }
+        @keyframes animate1{
+            0%{
+                transform:translateY(350px);
+            }
+            100%{
+                transform:translateY(0);
+            }
+        }
+        @keyframes animate0{
+            0%{
+                transform:translateX(-500px);
+            }
+            100%{
+                transform:translateX(0);
+            }
+        }
+        @keyframes animate2{
+            0%{
+                transform:scale(0.1);
+            }
+            100%{
+                transform:scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+        <div class="big"></div>
+    	<div class="wrapper">
+	        <div class="a0"></div>
+	        <div class="a1"></div>
+	        <div class="a2"></div>
+	        <div class="a3"></div>
+        </div>
+    <script>
+    	//四张图片地址
+        var ima=['https://wxt.sinaimg.cn/thumb300/6a2afec3ly1fxeihye2uxj20qp0uv0y8.jpg?tags=%5B%5D','https://wxt.sinaimg.cn/thumb300/6a2afec3ly1fxeik13thpj20qo0vjjw1.jpg?tags=%5B%5D','https://wxt.sinaimg.cn/thumb300/6a2afec3gy1fwvoays5odj22c0340000.jpg?tags=%5B%5D','https://wx2.sinaimg.cn/mw690/6a2afec3ly1fvo1rrqctlj21oh2ipb2c.jpg'];
+    	var big=document.querySelector('.big');
+    	var wrapper=document.querySelector('.wrapper');
+	    wrapper.onclick=function(e){
+	    	var n=e.target.className.charAt(1);
+	    	big.style.backgroundImage ="url("+ima[n]+")";
+            if (n==0) {
+                    big.style.animation="animate0 1s ease-out";
+            }else if (n==1) {
+                    big.style.animation="animate1 1s ease-out";
+            }else if (n==2) {
+                    big.style.animation="animate2 1s ease-in";
+            }else if (n==3) {
+                    big.style.animation="animate3 1s ease-in-out";
+            }
+        }
+    </script>
+</body>
+
+</html>
