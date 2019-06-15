@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载</title>
+    <style>
+	    /*图片懒加载主要是在用户看到图片是加载图片即当图片进入视口是加载，
+主要实现的有两点1.判断图片是否进入视口2.给图片src赋值显示图片
+	    
+1.判断图片进入视口主要是要判断两个临界情况
+1>当图片的底部与视口上方相接即当图片刚好从上面进入视口
+2>当图片的顶部与视口上方相接即当图片刚好从下面进入视口
+
+当图片在这两个临界情况中间即是图片需要加载的视口
+当满足images[i].getBoundingClientRect().top>=-images[i].clientHeight即表示图片在视口下而且是从上至下出现，需要注意的是右边是负号
+当满足images[i].getBoundingClientRect().top
+<=document.documentElement.clientHeight
+时，表示图片从下至上进入视口，当两个条件都满足是即在视口内部
+先讲下视口距离涉及到的知识点
+
+getBoundingClientRect()主要是处理视口
+obj.getBoundingClientRect().top：元素上边到视窗上边的距离;
+obj.getBoundingClientRect().right：元素右边到视窗左边的距离;
+obj.getBoundingClientRect().bottom：元素下边到视窗上边的距离;
+obj.getBoundingClientRect().left：元素左边到视窗左边的距离;
+
+getBoundingClientRect().top是元素顶部相对于视口顶部的距离
+>0   元素顶部在视口顶部下
+<0   元素顶部在视口顶部上
+=0  刚好元素顶部与视口顶部重合
+
+client主要处理可视区域：
+clientHeight是不包括外边距的且不算元素滚动条高度的高度值
+clientTop是元素顶部border的宽度
+
+2.显示图片
+利用data-*属性，实现给图片将图片地址作为其属性再在需要加载时赋值给图片src
+<div data-dataname=“info”></div>属性赋值
+可以用obj.getAttribute("dataname")//info;获得属性值
+若元素判断在视口内部，则执行复制src给图片操作，每滚动一次则循环元素看那些元素在视口内*/
+    .container {
+        width: 800px;
+        margin: 0 auto;
+        /*			column-count: 2;
+			column-width: 180px;*/
+    }
+
+    .container img {
+        width: 100%;
+        vertical-align: middle;
+        height:400px;
+        border:none;
+         /* 取消图片默认间距 */
+
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="" data-origin="https://wx3.sinaimg.cn/mw690/6a2afec3ly1fz33wbd4xmj24002o0u0y.jpg" alt="">
+        <img src="" data-origin="https://wxt.sinaimg.cn/thumb300/6a2afec3gy1fwvoays5odj22c0340000.jpg?tags=%5B%5D" alt="">
+        <img src="" data-origin="https://wx2.sinaimg.cn/mw690/6a2afec3ly1fvo1rrqctlj21oh2ipb2c.jpg" alt="">
+        <img src="" data-origin="https://wx3.sinaimg.cn/mw690/6a2afec3ly1fvo1rmjaiij218g0xce82.jpg" alt="">
+        <img src="" data-origin="https://wx1.sinaimg.cn/mw690/6a2afec3ly1fvo1r6tcnuj20rs113b2a.jpg" alt="">
+        <img src="" data-origin="https://wx3.sinaimg.cn/mw690/6a2afec3ly1fvo1sapswqj22ip1ohhdw.jpg" alt="">
+        <img src="" data-origin="https://wxt.sinaimg.cn/thumb300/6a2afec3gy1fwvoays5odj22c0340000.jpg?tags=%5B%5D" alt="">
+        <img src="" data-origin="https://wx1.sinaimg.cn/mw690/6a2afec3ly1g0c820owc1j23402c0kjm.jpg" alt="">
+        <img src="" data-origin="https://wx2.sinaimg.cn/mw690/6a2afec3ly1g0c820x6orj215o0v97fp.jpg" alt="">
+        <img src="" data-origin="https://wx2.sinaimg.cn/mw690/6a2afec3ly1fyy601kwqkj20u010atga.jpg" alt="">
+        <img src="" data-origin="https://wx3.sinaimg.cn/mw690/6a2afec3ly1fz33wbd4xmj24002o0u0y.jpg" alt="">
+    </div>
+    <script>
+    init();
+
+    function init() {
+        // 加载首屏图片
+        lazyload();
+    }
+    window.onscroll = function() {
+        lazyload();
+    };
+
+    function lazyload() {
+        var images = document.getElementsByTagName('img');
+        for (var i = 0; i < images.length; i++) {
+        //    console.log(document.documentElement.clientHeight);
+            if(images[i].getBoundingClientRect().top>=-images[i].clientHeight&&images[i].getBoundingClientRect().top<=document.documentElement.clientHeight) {
+                imageLoaded(images[i], images[i].getAttribute('data-origin'));
+                console.log(i);
+            }
+        }
+    }
+    function imageLoaded(obj, src) {
+        var img = new Image();
+        img.onload = function() {
+            obj.src = src;
+        };
+        img.src = src;
+    }
+    </script>
+</body>
+
+</html>
