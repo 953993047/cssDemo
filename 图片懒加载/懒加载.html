@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载</title>
+    <style>
+    .container {
+        width: 800px;
+        margin: 0 auto;
+        /*          column-count: 2;
+            column-width: 180px;*/
+    }
+
+    .container img {
+        width: 100%;
+        vertical-align: middle;
+        height: 400px;
+        border: none;
+        /* 取消图片默认间距 */
+
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="" data-img="https://wx3.sinaimg.cn/mw690/6a2afec3ly1fz33wbd4xmj24002o0u0y.jpg" alt="" class="lazyload">
+        <img src="" data-img="https://wxt.sinaimg.cn/thumb300/6a2afec3gy1fwvoays5odj22c0340000.jpg?tags=%5B%5D" alt="" class="lazyload">
+        <img src="" data-img="https://wx2.sinaimg.cn/mw690/6a2afec3ly1fvo1rrqctlj21oh2ipb2c.jpg" alt="" class="lazyload">
+        <img src="" data-img="https://wx3.sinaimg.cn/mw690/6a2afec3ly1fvo1rmjaiij218g0xce82.jpg" alt="" class="lazyload">
+        <img src="" data-img="https://wx1.sinaimg.cn/mw690/6a2afec3ly1fvo1r6tcnuj20rs113b2a.jpg" alt="" class="lazyload">
+        <img src="" data-img="https://wx3.sinaimg.cn/mw690/6a2afec3ly1fvo1sapswqj22ip1ohhdw.jpg" alt="" class="lazyload">
+        <img src="" data-img="https://wxt.sinaimg.cn/thumb300/6a2afec3gy1fwvoays5odj22c0340000.jpg?tags=%5B%5D" alt="" class="lazyload">
+        <img src="" data-img="https://wx1.sinaimg.cn/mw690/6a2afec3ly1g0c820owc1j23402c0kjm.jpg" alt="" class="lazyload">
+        <img src="" data-img="https://wx2.sinaimg.cn/mw690/6a2afec3ly1g0c820x6orj215o0v97fp.jpg" alt="" class="lazyload">
+        <img src="" data-img="https://wx2.sinaimg.cn/mw690/6a2afec3ly1fyy601kwqkj20u010atga.jpg" alt="" class="lazyload">
+        <img src="" data-img="https://wx3.sinaimg.cn/mw690/6a2afec3ly1fz33wbd4xmj24002o0u0y.jpg" alt="" class="lazyload">
+    </div>
+    <script>
+    window.onload = function() {
+        var imgs = document.getElementsByClassName('lazyload');
+        var windowH = document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight;
+        loading();
+        window.onscroll = function() {
+            if (!imgs.length) {
+                window.scroll = null;
+            } else {
+                loading();
+            }
+        }
+
+        function loading() {
+            imgs = document.getElementsByClassName('lazyload');
+            for (var i = 0; i < imgs.length; i++) {
+                if (imgs[i].getBoundingClientRect().bottom > 0 &&
+                    imgs[i].getBoundingClientRect().top < windowH) {
+                    imgs[i].src = imgs[i].getAttribute('data-img');
+                    imgs[i].classList.remove('lazyload');
+                }
+            }
+        }
+    };
+    </script>
+</body>
+
+</html>
